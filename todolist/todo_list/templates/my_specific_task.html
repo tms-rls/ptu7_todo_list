@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title%}Task{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+<h1>Task description</h1>
+<br>
+<ul>
+    <li><strong>Date:</strong> {{ my_specific_task.date }}</li>
+    <br>
+    <li><strong>Task:</strong> {{ my_specific_task.name }}</li>
+    <br>
+    <li><strong>Notes:</strong>
+        <br>
+        {{my_specific_task.notes}}
+    </li>
+    <br>
+    <li class="{% if my_specific_task.due_date %}text-danger{% endif %}"><strong>
+        Deadline:</strong> {{my_specific_task.deadline}}
+    </li>
+</ul>
+
+{% endblock %}

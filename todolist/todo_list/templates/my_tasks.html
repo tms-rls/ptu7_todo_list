@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}My tasks{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+<h2>My tasks</h2>
+    {% if my_tasks %}
+        {% for task in my_tasks %}
+        <a href="{% url 'my_specific_task' task.pk %}">
+            <p class="{% if task.due_date %}text-danger{% endif %}">{{task.date}} -- {{ task.name }} -- {{ task.deadline }}</p>
+        </a>
+        {% endfor %}
+    {% else %}
+        <p>No tasks at the moment.</p>
+    {% endif %}
+{% endblock %}

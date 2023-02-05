@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}Statistics{% endblock %}
+{% block title %}Start{% endblock %}
 
 {% block content %}
-<h1>Our statistics</h1>
-<ul >
-    <li><strong>Current tasks:</strong> {{ num_tasks }}</li>
-</ul>
+<h1 style="text-align: center">Welcome to our wonderful TODO_list site</h1>
+<br>
+<br>
+<div>
+    <p>To use our site please <a href="{% url 'login'%}">log in</a> or <a href="{% url 'register'%}">register</a></p>
+</div>
 {% endblock %}

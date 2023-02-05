@@ -9,13 +9,8 @@ from .models import Task
 from .forms import TaskCreateForm
 
 
-def statistics(request):
-    num_tasks = Task.objects.all().count()
-    context = {
-        'num_tasks': num_tasks,
-    }
-
-    return render(request, 'start.html', context=context)
+def start(request):
+    return render(request, 'start.html')
 
 
 @csrf_protect

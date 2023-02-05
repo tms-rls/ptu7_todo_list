@@ -7,6 +7,7 @@
 {% block content %}
 
 <h2>My tasks</h2>
+<br>
     {% if my_tasks %}
         {% for task in my_tasks %}
         <a href="{% url 'my_specific_task' task.pk %}">

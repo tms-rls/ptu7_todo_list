@@ -73,3 +73,32 @@ class TaskByUserCreateView(LoginRequiredMixin, generic.CreateView):
         form.instance.user = self.request.user
         form.save()
         return super().form_valid(form)
+
+
+class TaskByUserUpdateView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
+    model = Task
+    template_name = 'my_task_form.html'
+    form_class = TaskCreateForm
+
+    def get_success_url(self):
+        return reverse('my_specific_task', kwargs={"pk": self.object.id})
+
+    def test_func(self):
+        task = self.get_object()
+        return task.user == self.request.user
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.save()
+        return super().form_valid(form)
+
+
+class TaskByUserDeleteView(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
+    model = Task
+    success_url = '/mytasks/'
+    template_name = 'my_task_delete.html'
+    context_object_name = 'my_specific_task'
+
+    def test_func(self):
+        task = self.get_object()
+        return task.user == self.request.user

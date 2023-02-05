@@ -22,5 +22,11 @@
         Deadline:</strong> {{my_specific_task.deadline}}
     </li>
 </ul>
+{% if my_specific_task.user == user %}
+    <div>
+         <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'my_tasks_update' my_specific_task.pk %}">Edit</a>
+         <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'my_tasks_delete' my_specific_task.pk %}">Delete</a>
+    </div>
+{% endif %}
 
 {% endblock %}
